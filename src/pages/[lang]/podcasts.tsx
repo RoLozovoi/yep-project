@@ -1,5 +1,51 @@
-const Podcasts = () => {
-  return <div>our podcasts</div>;
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { getLocalizationProps } from '../../context/LanguageContext';
+import useTranslation from '../../hooks/useTranslation';
+import Layout from '../../components/Layout';
+import Section from '../../components/common/Section';
+import Container from '../../components/common/Container';
+import React from 'react';
+import EntityCard from '../../components/EntityCard';
+
+const PodcastsPage = (): React.ReactElement => {
+  const { t } = useTranslation();
+
+  return (
+    <Layout>
+      <Section>
+        <Container>
+          <EntityCard
+            imgSrc="/images/podcasts/snobs_logo.png"
+            title={t('snobsName')}
+            desc={t('snobsDesc')}
+            href="https://we.fo/1491888204?p=auto"
+          />
+          <EntityCard
+            imgSrc="/images/podcasts/dogs_logo.png"
+            title={t('gotADogName')}
+            desc={t('gotADogDesc')}
+            href="https://we.fo/1538378031?p=auto"
+          />
+        </Container>
+      </Section>
+    </Layout>
+  );
 };
 
-export default Podcasts;
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const localization = getLocalizationProps(ctx, 'podcasts');
+  return {
+    props: {
+      localization,
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: ['ru', 'ua'].map((lang) => ({
+    params: { lang },
+  })),
+  fallback: false,
+});
+
+export default PodcastsPage;

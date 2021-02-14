@@ -87,6 +87,7 @@ export const getLocalizationProps = (
   const lang: Locale = (ctx.params?.lang as Locale) || 'ru';
   const locale: any = locales[lang];
   const strings: any = locale[namespace];
+
   const translations = {
     common: locales[lang].common,
     ...strings,

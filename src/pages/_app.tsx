@@ -1,17 +1,40 @@
 import React from 'react';
-import Layout from '../components/Layout';
-import '../styles/globals.scss';
+import App from 'next/app';
+import Head from 'next/head';
 import type { AppProps } from 'next/app';
+import '../styles/globals.scss';
 import { LanguageProvider } from '../context/LanguageContext';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from '../styles/theme';
 
-const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => (
-  <LanguageProvider localization={pageProps.localization}>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  </LanguageProvider>
-);
+class MyApp extends App<{ err: any }> {
+  componentDidMount() {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }
+  render() {
+    const { Component, pageProps, router }: AppProps = this.props;
+
+    return (
+      <>
+        <Head>
+          <title>YEP podcast</title>
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width"
+          />
+        </Head>
+        <ThemeProvider theme={theme}>
+          <LanguageProvider localization={pageProps.localization}>
+            <Component {...pageProps} key={router.route} />
+          </LanguageProvider>
+        </ThemeProvider>
+      </>
+    );
+  }
+}
 
 export default MyApp;
-
-// notes from BRAD TRAVERSY NEXTJS COURSE

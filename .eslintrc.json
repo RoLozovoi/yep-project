@@ -16,7 +16,11 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2020
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "classes": true
+    }
   },
   "env": {
     "es6": true,
@@ -111,7 +115,7 @@
     "no-console": [
       2,
       {
-        "allow": ["warn", "error"]
+        "allow": ["warn", "error", "info"]
       }
     ]
   },

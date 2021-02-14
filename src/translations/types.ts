@@ -17,5 +17,5 @@ export type Localization = {
 };
 
 export function isLocale(tested: string): tested is Locale {
-  return locales.some((locale: string) => locale === tested);
+  return locales.some((locale) => locale === tested);
 }

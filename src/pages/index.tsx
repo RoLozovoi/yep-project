@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-
 import { getInitialLocale } from '../translations/getInitialLocale';
 
 const Index: React.FC = () => {
@@ -10,7 +9,7 @@ const Index: React.FC = () => {
 
   return (
     <Head>
-      <meta name="robots" content="noindex, nofollow" />
+      <title>Home Page</title>
     </Head>
   );
 };
