@@ -56,7 +56,7 @@ const useStyles = makeStyles({
 const AboutPage = (): JSX.Element => {
   const styles = useStyles();
   const { t } = useTranslation();
-  console.log(t('about'));
+
   return (
     <Layout>
       <Section>

@@ -20,30 +20,30 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     color: colors.white,
+  },
+  logoWrapper: {
+    maxWidth: '66rem',
+    maxHeight: '30rem',
+    paddingBottom: '5rem',
+    animation: '$slideInFromTop 1s ease-in',
+  },
 
-    '& .logo-wrapper': {
-      maxWidth: '66rem',
-      maxHeight: '30rem',
-      paddingBottom: '5rem',
-    },
-
-    '& .title': {
-      fontSize: '7.5rem',
-      fontWeight: 'bold',
-      padding: '4rem 0',
-    },
-    '& .subtitle': {
-      fontSize: '4rem',
-    },
+  title: {
+    fontSize: '7.5rem',
+    fontWeight: 'bold',
+    padding: '4rem 0',
+    animation: '$slideInFromLeft 1s ease-in',
+  },
+  subtitle: {
+    fontSize: '4rem',
+    animation: '$slideInFromRight 1s ease-in',
   },
   benefitsSection: {
     paddingTop: '11rem',
     backgroundImage: 'url("images/home_mic.png")',
-    // width: '100%',
-    backgroundPosition: 'center' /* Center the image */,
-    backgroundRepeat: 'no-repeat' /* Do not repeat the image */,
-    backgroundSize:
-      '100% 100%' /* Resize the background image to cover the entire container */,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 100%',
 
     '@media (max-width: 992px)': {
       background: 'initial',
@@ -112,9 +112,13 @@ const useStyles = makeStyles({
       marginTop: '4rem',
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
-      gap: '5rem',
+      gap: '1.5rem',
 
       '&__item': {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+
         '& img': {
           width: '100%',
           height: 'auto',
@@ -128,17 +132,106 @@ const useStyles = makeStyles({
     color: colors.secondary,
     margin: 15,
   },
+  '@keyframes slideInFromLeft': {
+    '0%': {
+      transform: 'translateX(-100%)',
+    },
+
+    '100%': {
+      transform: 'translateX(0)',
+    },
+  },
+  '@keyframes slideInFromRight': {
+    '0%': {
+      transform: 'translateX(100%)',
+    },
+
+    '100%': {
+      transform: 'translateX(0)',
+    },
+  },
+  '@keyframes slideInFromTop': {
+    '0%': {
+      transform: 'translateY(-100%)',
+    },
+
+    '100%': {
+      transform: 'translateX(0)',
+    },
+  },
+  '@keyframes slideInFromBottom': {
+    '0%': {
+      transform: 'translateY(100%)',
+    },
+
+    '100%': {
+      transform: 'translateX(0)',
+    },
+  },
 });
 
-const partnersImagePaths: string[] = [
-  '/images/partners/arthuss.jpg',
-  '/images/partners/gastrofamily.png',
-  '/images/partners/hallway.png',
-  '/images/partners/kabanosy.png',
-  '/images/partners/laba.jpg',
-  '/images/partners/mariecosmetics.jpg',
-  '/images/partners/oldlev.jpg',
-  '/images/partners/decgroup.png',
+type PartnerImage = {
+  path: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
+const partnersImages: PartnerImage[] = [
+  {
+    path: '/images/partners/arthuss.jpg',
+    width: 275,
+    height: 100,
+    alt: 'Arthuss logo',
+  },
+  {
+    path: '/images/partners/gastrofamily.png',
+    width: 200,
+    height: 20,
+    alt: 'Gastrofamily logo',
+  },
+  {
+    path: '/images/partners/hallway.png',
+    width: 300,
+    height: 110,
+    alt: 'Hallway logo',
+  },
+  {
+    path: '/images/partners/kabanosy.png',
+    width: 300,
+    height: 155,
+    alt: 'Kabanosy logo',
+  },
+  {
+    path: '/images/partners/laba.jpg',
+    width: 200,
+    height: 200,
+    alt: 'Laba logo',
+  },
+  {
+    path: '/images/partners/mariecosmetics.jpg',
+    width: 300,
+    height: 95,
+    alt: 'Marie Cosmetics logo',
+  },
+  {
+    path: '/images/partners/oldlev.jpg',
+    width: 320,
+    height: 164,
+    alt: 'Видавництво старого Лева logo',
+  },
+  {
+    path: '/images/partners/decgroup.png',
+    width: 171,
+    height: 243,
+    alt: ' Dec Group logo',
+  },
+  // {
+  //   path: '/images/partners/decgroup.png',
+  //   width: 200,
+  //   height: 200,
+  //   alt: ' Dec Group logo',
+  // },
 ];
 
 const IndexPage = (): JSX.Element => {
@@ -149,7 +242,7 @@ const IndexPage = (): JSX.Element => {
     <Layout>
       <Section bgColor={colors.primary}>
         <Container className={styles.banner}>
-          <div className="logo-wrapper">
+          <div className={styles.logoWrapper}>
             <Image
               src="/images/white_logo.png"
               width={700}
@@ -157,14 +250,11 @@ const IndexPage = (): JSX.Element => {
               className="logo-image"
             />
           </div>
-          <h1 className="title">{t('title')}</h1>
-          <h2 className="subtitle">{t('subtitle')}</h2>
+          <h1 className={styles.title}>{t('title')}</h1>
+          <h2 className={styles.subtitle}>{t('subtitle')}</h2>
         </Container>
       </Section>
       <Section className={styles.benefitsSection}>
-        {/*<div className="image-wrapper">*/}
-        {/*  <img src="/images/home_mic.png" />*/}
-        {/*</div>*/}
         <Container className={styles.benefitsBlock}>
           <div className="podcasts-description">
             <h3>{t('whyNeededHeading')}</h3>
@@ -201,9 +291,9 @@ const IndexPage = (): JSX.Element => {
         <Container className={styles.partnersBlock}>
           <h3>{t('ourPartners')}</h3>
           <div className="partners-block">
-            {partnersImagePaths.map((path: string, index) => (
+            {partnersImages.map(({ width, height, path, alt }) => (
               <div className="partners-block__item" key={path}>
-                <img src={path} alt={`partner #${index}`} />
+                <Image width={width} height={height} src={path} alt={alt} />
               </div>
             ))}
           </div>

@@ -14,6 +14,9 @@ const common = {
   mobileNumber: 'Номер',
   email: 'E-mail',
   message: 'Повідомлення',
+  successSubmit: "Ми з вами з'вяжемось найближчим часом.",
+  errorSubmit:
+    "Упс. Щось пішло не так. Перевірте вашу інформацію або зв'яжіться з нами іншим способом.",
 };
 
 export default common;

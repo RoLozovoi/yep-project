@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from './common/Navbar';
 import Footer from './common/Footer';
 import { makeStyles } from '@material-ui/core';
+import Header from './header/Header';
 
 const useStyles = makeStyles({
   page: {
@@ -31,7 +31,7 @@ const Layout: React.FC = ({ children }: LayoutProps) => {
   return (
     <>
       <div className={page}>
-        <Navbar />
+        <Header />
         <main className={main}>{children}</main>
         <Footer />
       </div>

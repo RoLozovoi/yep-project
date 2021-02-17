@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import useTranslation from '../../hooks/useTranslation';
-import LocaleSwitcher from './LocaleSwitcher';
-import LocaleLink from './LocaleLink';
+import LocaleSwitcher from '../common/LocaleSwitcher';
+import LocaleLink from '../common/LocaleLink';
+import Header from './Header';
 import { makeStyles } from '@material-ui/core';
 import { colors } from '../../styles/variables';
 
@@ -20,11 +21,6 @@ const useStyles = makeStyles({
 
     '@media (max-width: 768px)': {
       flexFlow: 'wrap',
-    },
-  },
-  links: {
-    '@media (max-width: 768px)': {
-      // order: 3,
     },
   },
   link: {
@@ -59,6 +55,7 @@ const Navbar = (): JSX.Element => {
 
   return (
     <div className={styles.navbar}>
+      <Header />
       <LocaleLink href="/" as="/">
         <div className={styles.logo}>
           <Image
@@ -71,7 +68,7 @@ const Navbar = (): JSX.Element => {
           />
         </div>
       </LocaleLink>
-      <div className={styles.links}>
+      <div>
         {links.map(({ tKey, path }) => (
           <LocaleLink key={tKey} href={path} as={path} className={styles.link}>
             {t('common')[tKey]}

@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import useTranslation from '../../hooks/useTranslation';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { useForm } from 'react-hook-form';
+import IconButton from '@material-ui/core/IconButton';
+import Collapse from '@material-ui/core/Collapse';
+import CloseIcon from '@material-ui/icons/Close';
+import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core';
-import useTranslation from '../../hooks/useTranslation';
 
 const useStyles = makeStyles({
   form: {
@@ -26,7 +30,12 @@ const useStyles = makeStyles({
     padding: '1rem 3rem',
     fontSize: '1.5rem',
   },
+  alert: {
+    fontSize: '1.3rem',
+  },
 });
+
+type Severety = 'success' | 'error';
 
 type initialValueType = {
   name?: string;
@@ -40,21 +49,34 @@ interface ContactFormProps {
 }
 
 const ContactForm = ({ initialValues }: ContactFormProps): JSX.Element => {
+  const [submitResult, setSubmitResult] = useState<Severety | null>(null);
+  const [alertOpen, setAlertOpen] = useState(true);
   const styles = useStyles();
   const { t } = useTranslation();
-  const { handleSubmit, register } = useForm({
+  const { handleSubmit, register, reset } = useForm({
     defaultValues: initialValues,
   });
 
+  const hideAlert = () => setAlertOpen(false);
+
   const handleSave = async (data) => {
-    console.log('data', data);
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    const resolvedResponse = await response.json();
-    console.log(resolvedResponse);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.status === 200) {
+        setSubmitResult('success');
+        setAlertOpen(true);
+        reset();
+      } else {
+        setSubmitResult('error');
+      }
+    } catch (err) {
+      setSubmitResult('error');
+    }
   };
 
   return (
@@ -102,6 +124,26 @@ const ContactForm = ({ initialValues }: ContactFormProps): JSX.Element => {
         label={t('common')['message']}
         variant="outlined"
       />
+      {submitResult && (
+        <Collapse in={alertOpen}>
+          <Alert
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={hideAlert}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+            className={styles.alert}
+            severity={submitResult}
+          >
+            {t('common')[`${submitResult}Submit`]}
+          </Alert>
+        </Collapse>
+      )}
       <Button
         className={styles.button}
         variant="contained"

@@ -9,6 +9,8 @@ const transporter = nodemailer.createTransport({
     user: process.env.CONTACT_MAIL,
     pass: process.env.MAIL_PASS,
   },
+  debug: true,
+  logger: true,
 });
 
 type ValidatorType = {

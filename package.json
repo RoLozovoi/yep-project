@@ -16,6 +16,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "material-ui-phone-number": "^2.2.6",
     "next": "10.0.3",
     "node-sass": "^5.0.0",
