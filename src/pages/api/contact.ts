@@ -36,16 +36,16 @@ export default async (
       text: JSON.stringify(req.body),
     };
 
-    await transporter.sendMail(mailOptions, (error, info) => {
+    transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error(error);
+        res.status(500).send(error.message);
       } else {
         console.info('Email sent: ', info.response);
+        res.status(200).send('Success');
+        return;
       }
     });
-
-    res.status(200).send('Success');
-    return;
   } catch (err) {
     console.error(err);
     res.status(500).send(err);
