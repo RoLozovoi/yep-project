@@ -24,8 +24,6 @@ export default async (
 ): Promise<any> => {
   try {
     const { isValid, errorText }: ValidatorType = validate(req.body);
-    console.log('CONTACT_MAIL::: ', process.env.CONTACT_MAIL);
-    console.log('MAIL_PASS::: ', process.env.MAIL_PASS);
     if (!isValid) {
       res.status(400).send(errorText);
       return;
