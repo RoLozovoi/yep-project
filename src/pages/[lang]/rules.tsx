@@ -49,6 +49,7 @@ const useStyles = makeStyles({
     },
     '& li': {
       fontSize: '1.5rem',
+      padding: '.5rem',
     },
   },
 });
