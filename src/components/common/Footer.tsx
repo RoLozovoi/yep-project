@@ -3,13 +3,12 @@ import Link from 'next/link';
 import { makeStyles } from '@material-ui/core';
 import { colors } from '../../styles/variables';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
 import TelegramIcon from '@material-ui/icons/Telegram';
 
 const useStyles = makeStyles({
   footer: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '2rem',
     justifyContent: 'center',
     alignItems: 'center',
@@ -75,6 +74,9 @@ const Footer = (): React.ReactElement => {
         <a href="https://t.me/moitvoipodcast" target="_blank" rel="noreferrer">
           <TelegramIcon className="icon" />
         </a>
+      </div>
+      <div>
+        <Link href="/rules">Правила</Link>
       </div>
     </div>
   );

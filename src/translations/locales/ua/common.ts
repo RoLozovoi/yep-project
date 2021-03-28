@@ -1,7 +1,7 @@
 const common = {
   navAbout: 'Ми',
   navProjects: 'Проєкти',
-  navPodcasts: 'Підкасти',
+  navPodcasts: 'Подкасти',
   navServices: 'Послуги',
   navContacts: 'Контакти',
   submitButton: 'Надіслати',

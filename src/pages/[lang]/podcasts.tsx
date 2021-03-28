@@ -7,7 +7,7 @@ import Container from '../../components/common/Container';
 import React from 'react';
 import EntityCard from '../../components/EntityCard';
 
-const PodcastsPage = (): React.ReactElement => {
+const PodcastsPage = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (
@@ -17,12 +17,14 @@ const PodcastsPage = (): React.ReactElement => {
           <EntityCard
             imgSrc="/images/podcasts/snobs_logo.png"
             title={t('snobsName')}
+            subtitle={t('snobsSubtitle')}
             desc={t('snobsDesc')}
             href="https://we.fo/1491888204?p=auto"
           />
           <EntityCard
             imgSrc="/images/podcasts/dogs_logo.png"
             title={t('gotADogName')}
+            subtitle={t('gotADogSubtitle')}
             desc={t('gotADogDesc')}
             href="https://we.fo/1538378031?p=auto"
           />

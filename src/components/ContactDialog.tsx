@@ -9,7 +9,7 @@ import ContactForm from './common/ContactForm';
 interface ContactDialogProps {
   open: boolean;
   onClose: () => void;
-  initialText: string;
+  initialText?: string;
   dialogTitle: string;
 }
 

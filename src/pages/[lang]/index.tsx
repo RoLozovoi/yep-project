@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import { getLocalizationProps } from '../../context/LanguageContext';
@@ -12,6 +12,8 @@ import Container from '../../components/common/Container';
 import Section from '../../components/common/Section';
 import Card from '../../components/common/Card';
 import { colors } from '../../styles/variables';
+import Button from '@material-ui/core/Button';
+import ContactDialog from '../../components/ContactDialog';
 
 const useStyles = makeStyles({
   banner: {
@@ -36,6 +38,8 @@ const useStyles = makeStyles({
   },
   subtitle: {
     fontSize: '4rem',
+    margin: 0,
+    textAlign: 'left',
     animation: '$slideInFromRight 1s ease-in',
   },
   benefitsSection: {
@@ -71,6 +75,15 @@ const useStyles = makeStyles({
 
       '& p': {
         fontSize: '2rem',
+      },
+
+      '& ul': {
+        listStyleType: 'circle',
+        fontSize: '2rem',
+
+        '& li': {
+          padding: '1.5rem 0',
+        },
       },
 
       '@media (max-width: 992px)': {
@@ -168,6 +181,11 @@ const useStyles = makeStyles({
       transform: 'translateX(0)',
     },
   },
+  button: {
+    padding: '1rem 3rem',
+    fontSize: '1.5rem',
+    alignSelf: 'flex-end',
+  },
 });
 
 type PartnerImage = {
@@ -237,9 +255,19 @@ const partnersImages: PartnerImage[] = [
 const IndexPage = (): JSX.Element => {
   const styles = useStyles();
   const { t } = useTranslation();
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleDialogState = () => {
+    setOpenDialog(!openDialog);
+  };
 
   return (
     <Layout>
+      <ContactDialog
+        open={openDialog}
+        onClose={handleDialogState}
+        dialogTitle={t('feedbackTitle')}
+      />
       <Section bgColor={colors.primary}>
         <Container className={styles.banner}>
           <div className={styles.logoWrapper}>
@@ -248,23 +276,33 @@ const IndexPage = (): JSX.Element => {
               width={700}
               height={318}
               className="logo-image"
+              quality="50%"
             />
           </div>
           <h1 className={styles.title}>{t('title')}</h1>
-          <h2 className={styles.subtitle}>{t('subtitle')}</h2>
+          <h2 className={styles.subtitle}>{t('subtitle1')}</h2>
+          <h2 className={styles.subtitle}>{t('subtitle2')}</h2>
+          <h2 className={styles.subtitle}>{t('subtitle3')}</h2>
         </Container>
       </Section>
       <Section className={styles.benefitsSection}>
         <Container className={styles.benefitsBlock}>
           <div className="podcasts-description">
             <h3>{t('whyNeededHeading')}</h3>
-            <h4>{t('whyNeededFirstH')}</h4>
-            <p>{t('whyNeededFirstP')}</p>
-            <h4>{t('whyNeededSecondH')}</h4>
-            <p>{t('whyNeededSecondP')}</p>
-            <h4>{t('whyNeededThirdH')}</h4>
-            <p>{t('whyNeededThirdFirstParagraph')}</p>
-            <p>{t('whyNeededThirdSecondParagraph')}</p>
+            <ul>
+              <li> {t('whyNeededFirstItem')}</li>
+              <li>{t('whyNeededSecondItem')}</li>
+              <li>{t('whyNeededThirdItem')}</li>
+            </ul>
+            <p>{t('whyNeededConclusion')}</p>
+            <Button
+              className={styles.button}
+              variant="contained"
+              color="secondary"
+              onClick={handleDialogState}
+            >
+              {t('buttonText')}
+            </Button>
           </div>
         </Container>
       </Section>

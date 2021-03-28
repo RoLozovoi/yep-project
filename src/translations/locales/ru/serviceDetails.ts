@@ -5,15 +5,17 @@ const serviceDetails = {
   companyPodcastList3:
     'Создание трейлера и прописание контент-плана с гостями (в зависимости от формата) на первый сезон',
   companyPodcastList4: 'Разработка сценариев для каждого выпуска сезона',
-  companyPodcastList5: 'Монтаж всех эпизодов сезона',
+  companyPodcastList5: 'Запись та монтаж всех эпизодов сезона',
   companyPodcastList6:
     'Дистрибуция и продвижение на основные подкаст-платформы (Apple Podcasts, Google Podcasts, Spotify, CastBox, Soundcloud)',
   privatePodcastTitle: '«Личный подкаст»',
   privatePodcastList1: 'Консультация',
   privatePodcastList2: 'Создание названия, обложки и джингла',
-  privatePodcastList3: 'Запись и монтаж первого эпизода',
+  privatePodcastList3: 'Запись и монтаж трейлера и первого эпизода',
   privatePodcastList4:
     'Подбор платформы для хостинга и настройкой экспорта подкаста на основные площадки (Apple Podcasts, Google Podcasts,Spotify, CastBox, Soundcloud)',
+  privatePodcastList5:
+    'Дальнейшая консультация на протяжении полугода с момента запуска подкаста',
   montageTitle: '',
   montageList1:
     'Технический: обработка звука чистка шумов, выравнивание по громкости, минимальный монтаж. ',

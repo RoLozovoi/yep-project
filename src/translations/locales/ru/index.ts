@@ -6,6 +6,8 @@ import podcasts from './podcasts';
 import services from './services';
 import serviceDetails from './serviceDetails';
 import contacts from './contacts';
+import notfound from './notfound';
+import rules from './rules';
 
 export default {
   home,
@@ -16,4 +18,6 @@ export default {
   services,
   serviceDetails,
   contacts,
+  notfound,
+  rules,
 };

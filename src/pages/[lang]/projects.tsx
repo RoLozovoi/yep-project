@@ -21,7 +21,7 @@ const ProjectsPage = (): React.ReactElement => {
             href=""
           />
           <EntityCard
-            imgSrc="/images/projects/clever_in_love.jpg"
+            imgSrc="/images/projects/clever_in_love.jpeg"
             title={t('cleverLovedName')}
             subtitle={t('cleverLovedSubtitle')}
             desc={[
@@ -33,6 +33,7 @@ const ProjectsPage = (): React.ReactElement => {
           />
           <EntityCard
             imgSrc="/images/projects/m2.png"
+            subtitle={t('squareMSubtitle')}
             title={t('squareMName')}
             desc={t('squareMDesc')}
             href=""

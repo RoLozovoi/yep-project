@@ -24,7 +24,8 @@ export default async (
 ): Promise<any> => {
   try {
     const { isValid, errorText }: ValidatorType = validate(req.body);
-
+    console.log('CONTACT_MAIL::: ', process.env.CONTACT_MAIL);
+    console.log('MAIL_PASS::: ', process.env.MAIL_PASS);
     if (!isValid) {
       res.status(400).send(errorText);
       return;
@@ -37,7 +38,7 @@ export default async (
       text: JSON.stringify(req.body),
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
+    await transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error(error);
       } else {
@@ -49,7 +50,7 @@ export default async (
     return;
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server Error');
+    res.status(500).send(err);
     return;
   }
 };
