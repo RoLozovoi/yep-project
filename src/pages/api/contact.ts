@@ -41,7 +41,7 @@ export default async (
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error(error);
-        res.status(500).send(process.env.CONTACT_MAIL + process.env.MAIL_PASS);
+        res.status(500).send(error.errorText);
         return;
       } else {
         console.info('Email sent: ', info.response);
