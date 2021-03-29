@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
 import { makeStyles } from '@material-ui/core';
 
 import { getLocalizationProps } from '../../../context/LanguageContext';
@@ -9,8 +8,6 @@ import Layout from '../../../components/Layout';
 import Section from '../../../components/common/Section';
 import Container from '../../../components/common/Container';
 import ServiceCard from '../../../components/ServiceCard';
-import LocaleLink from '../../../components/common/LocaleLink';
-import { colors } from '../../../styles/variables';
 import ContactDialog from '../../../components/ContactDialog';
 
 const useStyles = makeStyles({

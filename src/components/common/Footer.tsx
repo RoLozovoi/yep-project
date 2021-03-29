@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import { colors } from '../../styles/variables';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TelegramIcon from '@material-ui/icons/Telegram';
+import useTranslation from '../../hooks/useTranslation';
 
 const useStyles = makeStyles({
   footer: {
@@ -13,8 +14,8 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    height: '160px',
     borderTop: '1px solid #eaeaea',
+    padding: '5rem 0',
     background: colors.secondary,
     color: colors.white,
     fontWeight: 'bold',
@@ -53,15 +54,25 @@ const useStyles = makeStyles({
       color: colors.white,
     },
   },
+
+  linkBox: {
+    textAlign: 'center',
+
+    '& a': {
+      color: colors.white,
+      fontSize: '1.6rem',
+    },
+  },
 });
 
 const Footer = (): React.ReactElement => {
   const styles = useStyles();
+  const { t, locale } = useTranslation();
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <div>
         <h4>YEP Podcast</h4>
-        <p>Copyright &copy; 2020-2021</p>
+        <p>Copyright &copy; 2019-2021</p>
       </div>
       <div className={styles.social}>
         <a
@@ -75,10 +86,10 @@ const Footer = (): React.ReactElement => {
           <TelegramIcon className="icon" />
         </a>
       </div>
-      <div>
-        <Link href="/rules">Правила</Link>
+      <div className={styles.linkBox}>
+        <Link href={`/${locale}/rules`}>{t('common')['ourRules']}</Link>
       </div>
-    </div>
+    </footer>
   );
 };
 

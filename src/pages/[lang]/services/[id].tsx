@@ -9,6 +9,7 @@ import Container from '../../../components/common/Container';
 import Image from 'next/image';
 import useTranslation from '../../../hooks/useTranslation';
 import ContactDialog from '../../../components/ContactDialog';
+import Card from '../../../components/common/Card';
 
 const useStyles = makeStyles({
   service: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
     },
 
     '@media (max-width: 768px)': {
-      margin: 0,
+      margin: '0 auto',
     },
   },
   desc: {
@@ -41,6 +42,10 @@ const useStyles = makeStyles({
     fontSize: '3rem',
     textAlign: 'center',
     paddingBottom: '5rem',
+
+    '@media (max-width: 768px)': {
+      textAlign: 'center',
+    },
   },
   list: {
     fontSize: '1.8rem',
@@ -55,6 +60,7 @@ const useStyles = makeStyles({
     padding: '1rem 3rem',
     fontSize: '1.5rem',
     alignSelf: 'flex-end',
+    marginRight: '2rem',
   },
 });
 
@@ -85,26 +91,28 @@ const Service = ({ service }: ServiceProps): JSX.Element => {
         initialText={title}
         dialogTitle={t('purchaseHeader')}
       />
-      <Container className={styles.service}>
-        <div className={styles.imageBox}>
-          <Image src={imgSrc} width={500} height={500} />
-        </div>
-        <div className={styles.desc}>
-          <h3 className={styles.title}>{title}</h3>
-          <ul className={styles.list}>
-            {servicesList.map((item) => (
-              <li key={item.substr(0, 6)}>{item}</li>
-            ))}
-          </ul>
-          <Button
-            className={styles.button}
-            variant="contained"
-            color="secondary"
-            onClick={handleDialogState}
-          >
-            {t('common')['buy']}
-          </Button>
-        </div>
+      <Container>
+        <Card className={styles.service}>
+          <div className={styles.imageBox}>
+            <Image src={imgSrc} width={500} height={500} />
+          </div>
+          <div className={styles.desc}>
+            <h3 className={styles.title}>{title}</h3>
+            <ul className={styles.list}>
+              {servicesList.map((item) => (
+                <li key={item.substr(0, 6)}>{item}</li>
+              ))}
+            </ul>
+            <Button
+              className={styles.button}
+              variant="contained"
+              color="secondary"
+              onClick={handleDialogState}
+            >
+              {t('common')['buy']}
+            </Button>
+          </div>
+        </Card>
       </Container>
     </Layout>
   );

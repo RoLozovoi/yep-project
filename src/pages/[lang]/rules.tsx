@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     },
 
     '@media (max-width: 768px)': {
-      margin: 0,
+      margin: '0 auto',
       order: 1,
     },
   },
@@ -43,13 +43,18 @@ const useStyles = makeStyles({
     '& h3': {
       fontSize: '2rem',
       fontWeight: 'bold',
+      paddingBottom: '2rem',
     },
     '& p': {
       fontSize: '1.6rem',
     },
     '& li': {
-      fontSize: '1.5rem',
+      fontSize: '1.6rem',
       padding: '.5rem',
+    },
+
+    '@media (max-width: 768px)': {
+      textAlign: 'center',
     },
   },
 });
@@ -131,10 +136,18 @@ const RulesPage = (): React.ReactElement => {
                 <p>{t('montageDesc')}</p>
                 <p>{t('montageSubT')}</p>
                 <ul>
-                  <li>{t('montageEx1')}</li>
-                  <li>{t('montageEx2')}</li>
-                  <li>{t('montageEx3')}</li>
-                  <li>{t('montageEx4')}</li>
+                  <li>
+                    <i>{t('montageEx1')}</i>
+                  </li>
+                  <li>
+                    <i>{t('montageEx2')}</i>
+                  </li>
+                  <li>
+                    <i>{t('montageEx3')}</i>
+                  </li>
+                  <li>
+                    <i>{t('montageEx4')}</i>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -170,17 +183,32 @@ const RulesPage = (): React.ReactElement => {
               <div className={styles.desc}>
                 <h3>{t('correctionsImpossibleTitle')}</h3>
                 <ul>
-                  <li>{t('correctionsItem1')}</li>
-                  <li>{t('correctionsItem2')}</li>
+                  <li>
+                    <b>{t('correctionsItem1t')}</b>
+                    {t('correctionsItem1p')}
+                  </li>
+                  <li>
+                    <b>{t('correctionsItem2t')}</b>
+                    {t('correctionsItem2p')}
+                  </li>
                   <li>
                     <ul>
                       <li>{t('correctionsItem2subitem1')}</li>
                       <li>{t('correctionsItem2subitem2')}</li>
                     </ul>
                   </li>
-                  <li>{t('correctionsItem3')}</li>
-                  <li>{t('correctionsItem4')}</li>
-                  <li>{t('correctionsItem5')}</li>
+                  <li>
+                    <b>{t('correctionsItem3t')}</b>
+                    {t('correctionsItem3p')}
+                  </li>
+                  <li>
+                    <b>{t('correctionsItem4t')}</b>
+                    {t('correctionsItem4p')}
+                  </li>
+                  <li>
+                    <b>{t('correctionsItem5t')}</b>
+                    {t('correctionsItem5p')}
+                  </li>
                 </ul>
               </div>
             </div>

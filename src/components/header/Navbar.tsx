@@ -51,12 +51,13 @@ const links: Array<PathLink> = [
 
 const Navbar = (): JSX.Element => {
   const styles = useStyles();
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
+  console.log('locale', locale);
   return (
     <div className={styles.navbar}>
       <Header />
-      <LocaleLink href="/" as="/">
+      <LocaleLink href={`/${locale}`} as="/">
         <div className={styles.logo}>
           <Image
             src="/images/black_logo.png"
@@ -70,7 +71,12 @@ const Navbar = (): JSX.Element => {
       </LocaleLink>
       <div>
         {links.map(({ tKey, path }) => (
-          <LocaleLink key={tKey} href={path} as={path} className={styles.link}>
+          <LocaleLink
+            key={tKey}
+            href={`/${locale}${path}`}
+            as={path}
+            className={styles.link}
+          >
             {t('common')[tKey]}
           </LocaleLink>
         ))}
