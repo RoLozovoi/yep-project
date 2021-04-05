@@ -29,8 +29,6 @@ export default async (
       return;
     }
 
-    console.log('process.env.CONTACT_MAIL!!!!!!:', process.env.CONTACT_MAIL);
-    console.log('process.env.MAIL_PASS!!!!!!:', process.env.MAIL_PASS);
     const mailOptions = {
       from: req.body.email,
       to: process.env.CONTACT_MAIL,

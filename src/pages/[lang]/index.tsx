@@ -125,8 +125,8 @@ const useStyles = makeStyles({
       marginTop: '4rem',
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
-      columnGap: '1.5rem',
-      rowGap: '4rem',
+      columnGap: '2.5rem',
+      rowGap: '5rem',
 
       '&__item': {
         display: 'flex',
@@ -138,28 +138,12 @@ const useStyles = makeStyles({
           height: 'auto',
         },
       },
-
-      '& .gridForth': {
-        // gridColumn: '1 / 2',
-      },
-      '& .gridFifth': {
-        gridColumn: '3',
-      },
-
       '@media (max-width: 768px)': {
         gridTemplateColumns: 'repeat(2, 1fr)',
-
-        '& .gridFifth': {
-          gridColumn: 'initial',
-        },
       },
 
       '@media (max-width: 576px)': {
         gridTemplateColumns: 'repeat(1, 1fr)',
-
-        '& .gridFifth': {
-          gridColumn: 'initial',
-        },
       },
     },
   },
@@ -217,7 +201,6 @@ type PartnerImage = {
   width: number;
   height: number;
   alt: string;
-  className?: string;
 };
 
 const partnersImages: PartnerImage[] = [
@@ -244,14 +227,18 @@ const partnersImages: PartnerImage[] = [
     width: 275,
     height: 100,
     alt: 'Arthuss logo',
-    className: 'gridForth',
+  },
+  {
+    path: '/images/partners/megogo.png',
+    width: 330,
+    height: 130,
+    alt: 'Megogo logo',
   },
   {
     path: '/images/partners/kabanosy.png',
     width: 300,
     height: 155,
     alt: 'Kabanosy logo',
-    className: 'gridFifth',
   },
   {
     path: '/images/partners/oldlev.jpg',
@@ -297,7 +284,7 @@ const IndexPage = (): JSX.Element => {
               width={700}
               height={318}
               className="logo-image"
-              quality={10}
+              quality={1}
             />
           </div>
           <h1 className={styles.title}>{t('title')}</h1>
@@ -350,8 +337,8 @@ const IndexPage = (): JSX.Element => {
         <Container className={styles.partnersBlock}>
           <h3>{t('ourPartners')}</h3>
           <div className="partners-block">
-            {partnersImages.map(({ width, height, path, alt, className }) => (
-              <div className={`partners-block__item + ${className}`} key={path}>
+            {partnersImages.map(({ width, height, path, alt }) => (
+              <div className="partners-block__item" key={path}>
                 <Image width={width} height={height} src={path} alt={alt} />
               </div>
             ))}
