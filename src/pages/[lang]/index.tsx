@@ -22,12 +22,17 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'center',
     color: colors.white,
+    height: '100vh',
   },
   logoWrapper: {
     maxWidth: '66rem',
     maxHeight: '30rem',
     paddingBottom: '5rem',
     animation: '$slideInFromTop 1s ease-in',
+
+    '@media (max-width: 768px)': {
+      paddingBottom: '1.5rem',
+    },
   },
 
   title: {
@@ -35,12 +40,21 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
     padding: '4rem 0',
     animation: '$slideInFromLeft 1s ease-in',
+
+    '@media (max-width: 768px)': {
+      padding: '1.5rem 0',
+      fontSize: '4.5rem',
+    },
   },
   subtitle: {
     fontSize: '4rem',
     margin: 0,
     textAlign: 'left',
     animation: '$slideInFromRight 1s ease-in',
+
+    '@media (max-width: 768px)': {
+      fontSize: '3.2rem',
+    },
   },
   benefitsSection: {
     paddingTop: '11rem',
