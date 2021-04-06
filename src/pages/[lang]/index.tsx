@@ -23,6 +23,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     color: colors.white,
     height: '100vh',
+    overflow: 'hidden',
   },
   logoWrapper: {
     maxWidth: '66rem',
