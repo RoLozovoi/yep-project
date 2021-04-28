@@ -56,6 +56,10 @@ const useStyles = makeStyles({
     '@media (max-width: 768px)': {
       fontSize: '3.2rem',
     },
+
+    '@media (max-width: 576px)': {
+      alignSelf: 'start',
+    },
   },
   benefitsSection: {
     paddingTop: '11rem',

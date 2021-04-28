@@ -14,7 +14,7 @@ const ProjectsPage = (): React.ReactElement => {
       <Section>
         <Container>
           <EntityCard
-            imgSrc="/images/projects/qwerty.png"
+            imgSrc="/images/projects/qwerty.JPG"
             title={t('qwertyName')}
             subtitle={t('qwertySubtitle')}
             desc={t('qwertyDesc')}

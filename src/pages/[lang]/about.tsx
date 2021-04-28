@@ -50,6 +50,10 @@ const useStyles = makeStyles({
     padding: '3.5rem',
     fontSize: '4.5rem',
     fontWeight: 'bold',
+
+    '@media (max-width: 576px)': {
+      fontSize: '3rem',
+    },
   },
 });
 
