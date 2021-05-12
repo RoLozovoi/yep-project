@@ -36,7 +36,7 @@ const ProjectsPage = (): React.ReactElement => {
             subtitle={t('squareMSubtitle')}
             title={t('squareMName')}
             desc={t('squareMDesc')}
-            href=""
+            href="https://we.fo/1565087725?p=auto"
           />
         </Container>
       </Section>
