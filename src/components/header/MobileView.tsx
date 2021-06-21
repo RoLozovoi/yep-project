@@ -22,7 +22,11 @@ const MobileView = ({ styles }): JSX.Element => {
         <MenuIcon className={styles.burger} />
       </IconButton>
       <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerState}>
-        <NavLinks linkStyle={styles.link} navStyle={styles.mobileLinks} />
+        <NavLinks
+          linkStyle={styles.link}
+          navStyle={styles.mobileLinks}
+          buttonStyles={styles.mediakitButton}
+        />
       </Drawer>
       <LogoBox className={styles.logo} />
       <LocaleSwitcher />

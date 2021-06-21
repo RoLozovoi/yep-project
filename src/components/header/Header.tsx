@@ -51,6 +51,11 @@ const useStyles = makeStyles(() => ({
   desktopLinks: {
     paddingLeft: '3.5rem',
   },
+  mediakitButton: {
+    padding: '7px 15px',
+    margin: '10px',
+    fontSize: '1.2rem',
+  },
 }));
 
 function HideOnScroll({ children }: { children: React.ReactElement }) {

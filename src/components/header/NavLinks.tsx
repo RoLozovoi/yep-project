@@ -1,6 +1,7 @@
 import React from 'react';
 import LocaleLink from '../common/LocaleLink';
 import useTranslation from '../../hooks/useTranslation';
+import { Button } from '@material-ui/core';
 
 type PathLink = {
   tKey: string;
@@ -18,11 +19,16 @@ const links: Array<PathLink> = [
 interface NavLinksProps {
   linkStyle: string;
   navStyle: string;
+  buttonStyles: string;
 }
 
-const NavLinks = ({ linkStyle, navStyle }: NavLinksProps): JSX.Element => {
-  const { t } = useTranslation();
-
+const NavLinks = ({
+  linkStyle,
+  navStyle,
+  buttonStyles,
+}: NavLinksProps): JSX.Element => {
+  const { t, locale } = useTranslation();
+  console.log(buttonStyles);
   return (
     <div className={navStyle}>
       {links.map(({ tKey, path }) => (
@@ -30,6 +36,19 @@ const NavLinks = ({ linkStyle, navStyle }: NavLinksProps): JSX.Element => {
           {t('common')[tKey]}
         </LocaleLink>
       ))}
+      <a
+        href={
+          locale === 'ru'
+            ? '/kits/yep-studio-mediakit-ru.pdf'
+            : '/kits/yep-studio-mediakit-ua.pdf'
+        }
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Button className={buttonStyles} variant="contained" color="secondary">
+          {t('common')['mediaKit']}
+        </Button>
+      </a>
     </div>
   );
 };
