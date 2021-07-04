@@ -50,6 +50,22 @@ class MyDocument extends Document<{ locale: Locale }> {
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap"
             rel="stylesheet"
           />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=G-52FHL0T1EW`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-52FHL0T1EW', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
         </Head>
         <body>
           <Main />

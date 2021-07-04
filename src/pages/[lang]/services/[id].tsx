@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../../../components/Layout';
+import Head from 'next/head';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { getLocalizationProps } from '../../../context/LanguageContext';
 import { locales } from '../../../translations/config';
@@ -10,6 +11,7 @@ import Image from 'next/image';
 import useTranslation from '../../../hooks/useTranslation';
 import ContactDialog from '../../../components/ContactDialog';
 import Card from '../../../components/common/Card';
+import { useRouter } from 'next/router';
 
 const useStyles = makeStyles({
   service: {
@@ -76,6 +78,7 @@ interface ServiceProps {
 const Service = ({ service }: ServiceProps): JSX.Element => {
   const [openDialog, setOpenDialog] = useState(false);
   const { t } = useTranslation();
+  const { asPath } = useRouter();
   const styles = useStyles();
   const { title, servicesList, imgSrc } = service;
 
@@ -83,38 +86,79 @@ const Service = ({ service }: ServiceProps): JSX.Element => {
     setOpenDialog(!openDialog);
   };
 
+  const getHeadTranslations = () => {
+    const key = asPath.substr(13, asPath.length - 1);
+    const transObj = {
+      'private-podcast': {
+        title: t('common')['metaPrivateServicesTitle'],
+        desc: t('common')['metaPrivateServicesDesc'],
+      },
+      'company-podcast': {
+        title: t('common')['metaBusinessServicesTitle'],
+        desc: t('common')['metaBusinessServicesDesc'],
+      },
+      montage: {
+        title: t('common')['metaMontageTitle'],
+        desc: t('common')['metaMontageDesc'],
+      },
+    };
+
+    return transObj[key];
+  };
+  const translations = getHeadTranslations();
+
   return (
-    <Layout>
-      <ContactDialog
-        open={openDialog}
-        onClose={handleDialogState}
-        initialText={title}
-        dialogTitle={t('purchaseHeader')}
-      />
-      <Container>
-        <Card className={styles.service}>
-          <div className={styles.imageBox}>
-            <Image src={imgSrc} width={500} height={500} />
-          </div>
-          <div className={styles.desc}>
-            <h3 className={styles.title}>{title}</h3>
-            <ul className={styles.list}>
-              {servicesList.map((item) => (
-                <li key={item.substr(0, 6)}>{item}</li>
-              ))}
-            </ul>
-            <Button
-              className={styles.button}
-              variant="contained"
-              color="secondary"
-              onClick={handleDialogState}
-            >
-              {t('common')['buy']}
-            </Button>
-          </div>
-        </Card>
-      </Container>
-    </Layout>
+    <>
+      <Head>
+        <title>{translations.title}</title>
+        <meta name="description" content={translations.desc} />
+        <link
+          rel="alternate"
+          hrefLang="uk"
+          href={'https://www.yep-studio.com/ua/'.concat(
+            asPath.substr(4, asPath.length - 1)
+          )}
+        />
+        <link
+          rel="alternate"
+          hrefLang="ru"
+          href={'https://www.yep-studio.com/ru/'.concat(
+            asPath.substr(4, asPath.length - 1)
+          )}
+        />
+      </Head>
+      <Layout>
+        <ContactDialog
+          open={openDialog}
+          onClose={handleDialogState}
+          initialText={title}
+          dialogTitle={t('purchaseHeader')}
+        />
+        <Container>
+          <Card className={styles.service}>
+            <div className={styles.imageBox}>
+              <Image src={imgSrc} width={500} height={500} />
+            </div>
+            <div className={styles.desc}>
+              <h3 className={styles.title}>{title}</h3>
+              <ul className={styles.list}>
+                {servicesList.map((item) => (
+                  <li key={item.substr(0, 6)}>{item}</li>
+                ))}
+              </ul>
+              <Button
+                className={styles.button}
+                variant="contained"
+                color="secondary"
+                onClick={handleDialogState}
+              >
+                {t('common')['buy']}
+              </Button>
+            </div>
+          </Card>
+        </Container>
+      </Layout>
+    </>
   );
 };
 

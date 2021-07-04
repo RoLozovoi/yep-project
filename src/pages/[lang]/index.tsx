@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
+import Head from 'next/head';
 import { getLocalizationProps } from '../../context/LanguageContext';
 import { makeStyles } from '@material-ui/core';
 import FastForwardIcon from '@material-ui/icons/FastForward';
@@ -289,82 +290,98 @@ const IndexPage = (): JSX.Element => {
   };
 
   return (
-    <Layout>
-      <ContactDialog
-        open={openDialog}
-        onClose={handleDialogState}
-        dialogTitle={t('feedbackTitle')}
-      />
-      <Section bgColor={colors.primary}>
-        <Container className={styles.banner}>
-          <div className={styles.logoWrapper}>
-            <Image
-              src="/images/white_logo.png"
-              width={700}
-              height={318}
-              className="logo-image"
-              quality={1}
-            />
-          </div>
-          <h1 className={styles.title}>{t('title')}</h1>
-          <h2 className={styles.subtitle}>{t('subtitle1')}</h2>
-          <h2 className={styles.subtitle}>{t('subtitle2')}</h2>
-          <h2 className={styles.subtitle}>{t('subtitle3')}</h2>
-        </Container>
-      </Section>
-      <Section className={styles.benefitsSection}>
-        <Container className={styles.benefitsBlock}>
-          <div className="podcasts-description">
-            <h3>{t('whyNeededHeading')}</h3>
-            <ul>
-              <li> {t('whyNeededFirstItem')}</li>
-              <li>{t('whyNeededSecondItem')}</li>
-              <li>{t('whyNeededThirdItem')}</li>
-            </ul>
-            <p>{t('whyNeededConclusion')}</p>
-            <Button
-              className={styles.button}
-              variant="contained"
-              color="secondary"
-              onClick={handleDialogState}
-            >
-              {t('buttonText')}
-            </Button>
-          </div>
-        </Container>
-      </Section>
-      <Section bgColor={colors.primary}>
-        <Container className={styles.servicesBlock}>
-          <Card className="card">
-            <h5>{t('responsibilities1H')}</h5>
-            <QuestionAnswerIcon className={styles.icon} />
-            <p>{t('responsibilities1P')}</p>
-          </Card>
-          <Card className="card">
-            <h5>{t('responsibilities2H')}</h5>
-            <FastForwardIcon className={styles.icon} />
-            <p>{t('responsibilities2P')}</p>
-          </Card>
-          <Card className="card">
-            <h5>{t('responsibilities3H')}</h5>
-            <BuildIcon className={styles.icon} />
-            <p>{t('responsibilities3P')}</p>
-          </Card>
-        </Container>
-      </Section>
-      <Section>
-        <Container className={styles.partnersBlock}>
-          <h3>{t('ourPartners')}</h3>
-          <div className="partners-block">
-            {partnersImages.map(({ width, height, path, alt }) => (
-              <div className="partners-block__item" key={path}>
-                <Image width={width} height={height} src={path} alt={alt} />
-              </div>
-            ))}
-          </div>
-        </Container>
-      </Section>
-    </Layout>
+    <>
+      <Head>
+        <title>{t('common')['metaMainTitle']}</title>
+        <meta name="description" content={t('common')['metaMainDesc']} />
+        <link
+          rel="alternate"
+          hrefLang="uk"
+          href="https://www.yep-studio.com/ua"
+        />
+        <link
+          rel="alternate"
+          hrefLang="ru"
+          href="https://www.yep-studio.com/ru"
+        />
+      </Head>
+      <Layout>
+        <ContactDialog
+          open={openDialog}
+          onClose={handleDialogState}
+          dialogTitle={t('feedbackTitle')}
+        />
+        <Section bgColor={colors.primary}>
+          <Container className={styles.banner}>
+            <div className={styles.logoWrapper}>
+              <Image
+                src="/images/white_logo.png"
+                width={700}
+                height={318}
+                className="logo-image"
+                quality={1}
+              />
+            </div>
+            <h1 className={styles.title}>{t('title')}</h1>
+            <h2 className={styles.subtitle}>{t('subtitle1')}</h2>
+            <h2 className={styles.subtitle}>{t('subtitle2')}</h2>
+            <h2 className={styles.subtitle}>{t('subtitle3')}</h2>
+          </Container>
+        </Section>
+        <Section className={styles.benefitsSection}>
+          <Container className={styles.benefitsBlock}>
+            <div className="podcasts-description">
+              <h3>{t('whyNeededHeading')}</h3>
+              <ul>
+                <li> {t('whyNeededFirstItem')}</li>
+                <li>{t('whyNeededSecondItem')}</li>
+                <li>{t('whyNeededThirdItem')}</li>
+              </ul>
+              <p>{t('whyNeededConclusion')}</p>
+              <Button
+                className={styles.button}
+                variant="contained"
+                color="secondary"
+                onClick={handleDialogState}
+              >
+                {t('buttonText')}
+              </Button>
+            </div>
+          </Container>
+        </Section>
+        <Section bgColor={colors.primary}>
+          <Container className={styles.servicesBlock}>
+            <Card className="card">
+              <h5>{t('responsibilities1H')}</h5>
+              <QuestionAnswerIcon className={styles.icon} />
+              <p>{t('responsibilities1P')}</p>
+            </Card>
+            <Card className="card">
+              <h5>{t('responsibilities2H')}</h5>
+              <FastForwardIcon className={styles.icon} />
+              <p>{t('responsibilities2P')}</p>
+            </Card>
+            <Card className="card">
+              <h5>{t('responsibilities3H')}</h5>
+              <BuildIcon className={styles.icon} />
+              <p>{t('responsibilities3P')}</p>
+            </Card>
+          </Container>
+        </Section>
+        <Section>
+          <Container className={styles.partnersBlock}>
+            <h3>{t('ourPartners')}</h3>
+            <div className="partners-block">
+              {partnersImages.map(({ width, height, path, alt }) => (
+                <div className="partners-block__item" key={path}>
+                  <Image width={width} height={height} src={path} alt={alt} />
+                </div>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      </Layout>
+    </>
   );
 };
 

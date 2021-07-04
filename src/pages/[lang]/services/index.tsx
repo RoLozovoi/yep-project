@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import { makeStyles } from '@material-ui/core';
-
 import { getLocalizationProps } from '../../../context/LanguageContext';
 import useTranslation from '../../../hooks/useTranslation';
 import Layout from '../../../components/Layout';
@@ -44,78 +44,93 @@ const ServicesPage = (): React.ReactElement => {
   };
 
   return (
-    <Layout>
-      <ContactDialog
-        open={openDialog}
-        onClose={handleDialogState}
-        initialText={descriptionText}
-        dialogTitle={t('purchaseHeader')}
-      />
-      <Section>
-        <Container>
-          <div className={styles.mainServices}>
-            <ServiceCard
-              title={t('companyPodcastTitle')}
-              desc={t('companyPodcastDesc')}
-              imgSrc={
-                locale === 'ua'
-                  ? '/images/services/podcast_for_comp_ua.png'
-                  : '/images/services/podcast_for_comp_ru.png'
-              }
-              imgSize={500}
-              buttonLabel={t('common')['details']}
-              withLink="/services/company-podcast"
-            />
-            <ServiceCard
-              title={t('privatePodcastTitle')}
-              desc={t('privatePodcastDesc')}
-              imgSrc={
-                locale === 'ua'
-                  ? '/images/services/podcast_idea_ua.png'
-                  : '/images/services/podcast_idea_ru.png'
-              }
-              imgSize={500}
-              buttonLabel={t('common')['details']}
-              withLink="/services/private-podcast"
-            />
-          </div>
-          <div className={styles.secondaryServices}>
-            <ServiceCard
-              title={t('consultingTitle')}
-              desc={t('consultingDesc')}
-              imgSrc={
-                locale === 'ua'
-                  ? '/images/services/consult_ua.png'
-                  : '/images/services/consult_ru.png'
-              }
-              imgSize={300}
-              buttonLabel={t('common')['buy']}
-              onClick={handlePurchase(t('consultingInitialDesc'))}
-            />
-            <ServiceCard
-              title={t('montageTitle')}
-              desc={t('montageDesc')}
-              imgSrc="/images/services/montaj.png"
-              imgSize={300}
-              buttonLabel={t('common')['details']}
-              withLink="/services/montage"
-            />
-            <ServiceCard
-              title={t('recordingTitle')}
-              desc={t('recordingDesc')}
-              imgSrc={
-                locale === 'ua'
-                  ? '/images/services/recording_ua.png'
-                  : '/images/services/recording_ru.png'
-              }
-              imgSize={300}
-              buttonLabel={t('common')['buy']}
-              onClick={handlePurchase(t('recordingInitialDesc'))}
-            />
-          </div>
-        </Container>
-      </Section>
-    </Layout>
+    <>
+      <Head>
+        <title>{t('common')['metaServicesTitle']}</title>
+        <link
+          rel="alternate"
+          hrefLang="uk"
+          href="https://www.yep-studio.com/ua/services"
+        />
+        <link
+          rel="alternate"
+          hrefLang="ru"
+          href="https://www.yep-studio.com/ru/services"
+        />
+      </Head>
+      <Layout>
+        <ContactDialog
+          open={openDialog}
+          onClose={handleDialogState}
+          initialText={descriptionText}
+          dialogTitle={t('purchaseHeader')}
+        />
+        <Section>
+          <Container>
+            <div className={styles.mainServices}>
+              <ServiceCard
+                title={t('companyPodcastTitle')}
+                desc={t('companyPodcastDesc')}
+                imgSrc={
+                  locale === 'ua'
+                    ? '/images/services/podcast_for_comp_ua.png'
+                    : '/images/services/podcast_for_comp_ru.png'
+                }
+                imgSize={500}
+                buttonLabel={t('common')['details']}
+                withLink="/services/company-podcast"
+              />
+              <ServiceCard
+                title={t('privatePodcastTitle')}
+                desc={t('privatePodcastDesc')}
+                imgSrc={
+                  locale === 'ua'
+                    ? '/images/services/podcast_idea_ua.png'
+                    : '/images/services/podcast_idea_ru.png'
+                }
+                imgSize={500}
+                buttonLabel={t('common')['details']}
+                withLink="/services/private-podcast"
+              />
+            </div>
+            <div className={styles.secondaryServices}>
+              <ServiceCard
+                title={t('consultingTitle')}
+                desc={t('consultingDesc')}
+                imgSrc={
+                  locale === 'ua'
+                    ? '/images/services/consult_ua.png'
+                    : '/images/services/consult_ru.png'
+                }
+                imgSize={300}
+                buttonLabel={t('common')['buy']}
+                onClick={handlePurchase(t('consultingInitialDesc'))}
+              />
+              <ServiceCard
+                title={t('montageTitle')}
+                desc={t('montageDesc')}
+                imgSrc="/images/services/montaj.png"
+                imgSize={300}
+                buttonLabel={t('common')['details']}
+                withLink="/services/montage"
+              />
+              <ServiceCard
+                title={t('recordingTitle')}
+                desc={t('recordingDesc')}
+                imgSrc={
+                  locale === 'ua'
+                    ? '/images/services/recording_ua.png'
+                    : '/images/services/recording_ru.png'
+                }
+                imgSize={300}
+                buttonLabel={t('common')['buy']}
+                onClick={handlePurchase(t('recordingInitialDesc'))}
+              />
+            </div>
+          </Container>
+        </Section>
+      </Layout>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import { getLocalizationProps } from '../../context/LanguageContext';
 import useTranslation from '../../hooks/useTranslation';
 import Layout from '../../components/Layout';
@@ -11,26 +12,41 @@ const PodcastsPage = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
-      <Section>
-        <Container>
-          <EntityCard
-            imgSrc="/images/podcasts/snobs_logo.png"
-            title={t('snobsName')}
-            subtitle={t('snobsSubtitle')}
-            desc={t('snobsDesc')}
-            href="https://we.fo/1491888204?p=auto"
-          />
-          <EntityCard
-            imgSrc="/images/podcasts/dogs_logo.png"
-            title={t('gotADogName')}
-            subtitle={t('gotADogSubtitle')}
-            desc={t('gotADogDesc')}
-            href="https://we.fo/1538378031?p=auto"
-          />
-        </Container>
-      </Section>
-    </Layout>
+    <>
+      <Head>
+        <title>{t('common')['metaPodcastsTitle']}</title>
+        <link
+          rel="alternate"
+          hrefLang="uk"
+          href="https://www.yep-studio.com/ua/podcasts"
+        />
+        <link
+          rel="alternate"
+          hrefLang="ru"
+          href="https://www.yep-studio.com/ru/podcasts"
+        />
+      </Head>
+      <Layout>
+        <Section>
+          <Container>
+            <EntityCard
+              imgSrc="/images/podcasts/snobs_logo.png"
+              title={t('snobsName')}
+              subtitle={t('snobsSubtitle')}
+              desc={t('snobsDesc')}
+              href="https://we.fo/1491888204?p=auto"
+            />
+            <EntityCard
+              imgSrc="/images/podcasts/dogs_logo.png"
+              title={t('gotADogName')}
+              subtitle={t('gotADogSubtitle')}
+              desc={t('gotADogDesc')}
+              href="https://we.fo/1538378031?p=auto"
+            />
+          </Container>
+        </Section>
+      </Layout>
+    </>
   );
 };
 

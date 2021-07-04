@@ -1,5 +1,6 @@
 import useTranslation from '../../hooks/useTranslation';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import { getLocalizationProps } from '../../context/LanguageContext';
 import Layout from '../../components/Layout';
 import Section from '../../components/common/Section';
@@ -62,69 +63,84 @@ const AboutPage = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
-      <Section>
-        <Container>
-          <div className={styles['person-block']}>
-            <Image
-              src="/images/about/ksu.png"
-              className={styles['person-block__image']}
-              width={450}
-              height={420}
-              quality={100}
-            />
-            <div className={styles['person-block__description']}>
-              <h3>{t('latsvievaH')}</h3>
-              <p>{t('latsvievaP')}</p>
+    <>
+      <Head>
+        <title>{t('common')['metaAboutTile']}</title>
+        <link
+          rel="alternate"
+          hrefLang="uk"
+          href="https://www.yep-studio.com/ua/about"
+        />
+        <link
+          rel="alternate"
+          hrefLang="ru"
+          href="https://www.yep-studio.com/ru/about"
+        />
+      </Head>
+      <Layout>
+        <Section>
+          <Container>
+            <div className={styles['person-block']}>
+              <Image
+                src="/images/about/ksu.png"
+                className={styles['person-block__image']}
+                width={450}
+                height={420}
+                quality={100}
+              />
+              <div className={styles['person-block__description']}>
+                <h3>{t('latsvievaH')}</h3>
+                <p>{t('latsvievaP')}</p>
+              </div>
             </div>
-          </div>
-          <div className={styles['person-block']}>
-            <div className={styles['person-block__description']}>
-              <h3>{t('tadaiH')}</h3>
-              <p>{t('tadaiP')}</p>
+            <div className={styles['person-block']}>
+              <div className={styles['person-block__description']}>
+                <h3>{t('tadaiH')}</h3>
+                <p>{t('tadaiP')}</p>
+              </div>
+              <Image
+                src="/images/about/tanya.png"
+                className={styles['person-block__image']}
+                width={450}
+                height={420}
+                quality={100}
+              />
             </div>
-            <Image
-              src="/images/about/tanya.png"
-              className={styles['person-block__image']}
-              width={450}
-              height={420}
-              quality={100}
-            />
-          </div>
-          <h2 className={styles.subtitle}>{t('editorsTitle')}</h2>
-          <div className={styles['person-block']}>
-            <Image
-              src="/images/about/dima.png"
-              className={styles['person-block__image']}
-              width={450}
-              height={420}
-              quality={100}
-            />
-            <div className={styles['person-block__description']}>
-              <h3>{t('dimaH')}</h3>
-              <p>{t('dimaP')}</p>
-              <p>{t('dimaAudioPortfolio')}</p>
-              <p>{t('dimaVideoPortfolio')}</p>
+            <h2 className={styles.subtitle}>{t('editorsTitle')}</h2>
+            <div className={styles['person-block']}>
+              <Image
+                src="/images/about/dima.png"
+                className={styles['person-block__image']}
+                width={450}
+                height={420}
+                quality={100}
+              />
+              <div className={styles['person-block__description']}>
+                <h3>{t('dimaH')}</h3>
+                <p>{t('dimaP')}</p>
+                <p>{t('dimaAudioPortfolio')}</p>
+                <p>{t('dimaVideoPortfolio')}</p>
+              </div>
             </div>
-          </div>
-          <div className={styles['person-block']}>
-            <div className={styles['person-block__description']}>
-              <h3>{t('ilyaH')}</h3>
-              <p>{t('ilyaP')}</p>
-              <p>{t('ilyaAudioPortfolio')}</p>
-              <p>{t('ilyaVideoPortfolio')}</p>
+            <div className={styles['person-block']}>
+              <div className={styles['person-block__description']}>
+                <h3>{t('ilyaH')}</h3>
+                <p>{t('ilyaP')}</p>
+                <p>{t('ilyaAudioPortfolio')}</p>
+                <p>{t('ilyaVideoPortfolio')}</p>
+              </div>
+              <Image
+                src="/images/about/illya.png"
+                className={styles['person-block__image']}
+                width={450}
+                height={420}
+                quality={100}
+              />
             </div>
-            <Image
-              src="/images/about/illya.png"
-              className={styles['person-block__image']}
-              width={450}
-              height={420}
-              quality={100}
-            />
-          </div>
-        </Container>
-      </Section>
-    </Layout>
+          </Container>
+        </Section>
+      </Layout>
+    </>
   );
 };
 

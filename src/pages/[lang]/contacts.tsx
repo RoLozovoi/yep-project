@@ -1,5 +1,6 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 
 import { makeStyles } from '@material-ui/core';
 import Link from '@material-ui/core/Link';
@@ -45,36 +46,55 @@ const ContactsPage = (): React.ReactElement => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
-      <Section>
-        <Container className={styles.contacts}>
-          <div className={styles.contactsInfo}>
-            <h3>{t('feedbackTitle')}</h3>
-            <p>{t('feedbackDesc')}</p>
-            <p>
-              {t('feedbackParagraphPart1')}
-              <Link href="mailto:moitvoipodcast@gmail.com">
-                moitvoipodcast@gmail.com
-              </Link>
-              {t('feedbackParagraphPart2')}
-              <Link href="https://t.me/ta_tadai" target="_blank" rel="noopener">
-                @ta_tadai
-              </Link>{' '}
-              &#47;{' '}
-              <Link href="https://t.me/Lats_k" target="_blank" rel="noopener">
-                @Lats_k
-              </Link>
-              &#46;
-            </p>
-          </div>
-          <div>
-            <Card>
-              <ContactForm />
-            </Card>
-          </div>
-        </Container>
-      </Section>
-    </Layout>
+    <>
+      <Head>
+        <title>{t('common')['metaContactsTitle']}</title>
+        <link
+          rel="alternate"
+          hrefLang="uk"
+          href="https://www.yep-studio.com/ua/contacts"
+        />
+        <link
+          rel="alternate"
+          hrefLang="ru"
+          href="https://www.yep-studio.com/ru/contacts"
+        />
+      </Head>
+      <Layout>
+        <Section>
+          <Container className={styles.contacts}>
+            <div className={styles.contactsInfo}>
+              <h3>{t('feedbackTitle')}</h3>
+              <p>{t('feedbackDesc')}</p>
+              <p>
+                {t('feedbackParagraphPart1')}
+                <Link href="mailto:moitvoipodcast@gmail.com">
+                  moitvoipodcast@gmail.com
+                </Link>
+                {t('feedbackParagraphPart2')}
+                <Link
+                  href="https://t.me/ta_tadai"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  @ta_tadai
+                </Link>{' '}
+                &#47;{' '}
+                <Link href="https://t.me/Lats_k" target="_blank" rel="noopener">
+                  @Lats_k
+                </Link>
+                &#46;
+              </p>
+            </div>
+            <div>
+              <Card>
+                <ContactForm />
+              </Card>
+            </div>
+          </Container>
+        </Section>
+      </Layout>
+    </>
   );
 };
 

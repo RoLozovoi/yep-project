@@ -28,7 +28,7 @@ const NavLinks = ({
   buttonStyles,
 }: NavLinksProps): JSX.Element => {
   const { t, locale } = useTranslation();
-  console.log(buttonStyles);
+
   return (
     <div className={navStyle}>
       {links.map(({ tKey, path }) => (
