@@ -30,7 +30,6 @@ const useStyles = makeStyles({
     maxWidth: '66rem',
     maxHeight: '30rem',
     paddingBottom: '5rem',
-    animation: '$slideInFromTop 1s ease-in',
 
     '@media (max-width: 768px)': {
       paddingBottom: '1.5rem',
@@ -191,15 +190,6 @@ const useStyles = makeStyles({
       transform: 'translateX(0)',
     },
   },
-  '@keyframes slideInFromTop': {
-    '0%': {
-      transform: 'translateY(-100%)',
-    },
-
-    '100%': {
-      transform: 'translateX(0)',
-    },
-  },
   '@keyframes slideInFromBottom': {
     '0%': {
       transform: 'translateY(100%)',
@@ -315,7 +305,7 @@ const IndexPage = (): JSX.Element => {
           <Container className={styles.banner}>
             <div className={styles.logoWrapper}>
               <Image
-                src="/images/white_logo.png"
+                src="/images/white_logo.svg"
                 width={700}
                 height={318}
                 className="logo-image"

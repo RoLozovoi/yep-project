@@ -12,6 +12,16 @@ const Services: React.FC = () => {
   return (
     <Head>
       <title>Services Page</title>
+      <link
+        rel="alternate"
+        hrefLang="uk"
+        href="https://www.yep-studio.com/ua/services"
+      />
+      <link
+        rel="alternate"
+        hrefLang="ru"
+        href="https://www.yep-studio.com/ru/services"
+      />
     </Head>
   );
 };

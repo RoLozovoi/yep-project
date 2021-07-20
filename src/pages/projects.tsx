@@ -12,6 +12,16 @@ const Projects: React.FC = () => {
   return (
     <Head>
       <title>Projects Page</title>
+      <link
+        rel="alternate"
+        hrefLang="uk"
+        href="https://www.yep-studio.com/ua/projects"
+      />
+      <link
+        rel="alternate"
+        hrefLang="ru"
+        href="https://www.yep-studio.com/ru/projects"
+      />
     </Head>
   );
 };

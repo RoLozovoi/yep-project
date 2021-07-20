@@ -12,6 +12,16 @@ const Contacts: React.FC = () => {
   return (
     <Head>
       <title>Contacts Page</title>
+      <link
+        rel="alternate"
+        hrefLang="uk"
+        href="https://www.yep-studio.com/ua/contacts"
+      />
+      <link
+        rel="alternate"
+        hrefLang="ru"
+        href="https://www.yep-studio.com/ru/contacts"
+      />
     </Head>
   );
 };

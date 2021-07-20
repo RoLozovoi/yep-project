@@ -12,6 +12,16 @@ const Podcasts: React.FC = () => {
   return (
     <Head>
       <title>Podcasts Page</title>
+      <link
+        rel="alternate"
+        hrefLang="uk"
+        href="https://www.yep-studio.com/ua/podcasts"
+      />
+      <link
+        rel="alternate"
+        hrefLang="ru"
+        href="https://www.yep-studio.com/ru/podcasts"
+      />
     </Head>
   );
 };
