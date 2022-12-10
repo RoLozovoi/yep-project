@@ -15,11 +15,11 @@ const Index: React.FC = () => {
         hrefLang="uk"
         href="https://www.yep-studio.com/ua"
       />
-      <link
-        rel="alternate"
-        hrefLang="ru"
-        href="https://www.yep-studio.com/ru"
-      />
+      {/*<link*/}
+      {/*  rel="alternate"*/}
+      {/*  hrefLang="ru"*/}
+      {/*  href="https://www.yep-studio.com/ru"*/}
+      {/*/>*/}
     </Head>
   );
 };

@@ -81,7 +81,7 @@ const Navbar = (): JSX.Element => {
           </LocaleLink>
         ))}
       </div>
-      <LocaleSwitcher />
+      {/*<LocaleSwitcher />*/}
     </div>
   );
 };

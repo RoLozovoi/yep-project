@@ -12,7 +12,7 @@ const MobileView = ({ styles }): JSX.Element => (
       navStyle={styles.desktopLinks}
       buttonStyles={styles.mediakitButton}
     />
-    <LocaleSwitcher />
+    {/*<LocaleSwitcher />*/}
   </Toolbar>
 );
 

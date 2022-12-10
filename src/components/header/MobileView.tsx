@@ -29,7 +29,7 @@ const MobileView = ({ styles }): JSX.Element => {
         />
       </Drawer>
       <LogoBox className={styles.logo} />
-      <LocaleSwitcher />
+      {/*<LocaleSwitcher />*/}
     </Toolbar>
   );
 };
